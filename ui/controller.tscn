@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/controller/lompatputih.png" type="Texture" id=1]
+[ext_resource path="res://assets/controller/nunduk.png" type="Texture" id=2]
+[ext_resource path="res://assets/controller/kiri.png" type="Texture" id=3]
+[ext_resource path="res://assets/controller/nundukputih.png" type="Texture" id=4]
+[ext_resource path="res://assets/controller/kanani.png" type="Texture" id=5]
+[ext_resource path="res://assets/controller/kananiputih.png" type="Texture" id=6]
+[ext_resource path="res://assets/controller/lompat.png" type="Texture" id=7]
+[ext_resource path="res://assets/controller/kiriputih.png" type="Texture" id=8]
+[ext_resource path="res://ui/controller.gd" type="Script" id=9]
+
+[node name="controller" type="Control"]
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lompat" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 817.765, 330.001 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 1 )
+action = "atas"
+
+[node name="bawah" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 818.181, 463.988 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 4 )
+action = "bawah"
+
+[node name="kiri" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 62.2147, 476.581 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 8 )
+action = "kiri"
+
+[node name="kanan" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.466667 )
+position = Vector2( 198.438, 476.541 )
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+action = "kanan"
+[connection signal="pressed" from="lompat" to="." method="_on_lompat_pressed"]
+[connection signal="pressed" from="bawah" to="." method="_on_bawah_pressed"]
+[connection signal="pressed" from="kiri" to="." method="_on_kiri_pressed"]
+[connection signal="pressed" from="kanan" to="." method="_on_kanan_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://player/playermerah.tscn" type="PackedScene" id=1]
+[ext_resource path="res://level/level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/levelmerah.gd" type="Script" id=3]
+
+[node name="level merah" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="playermerah" parent="." index="7" instance=ExtResource( 1 )]
+
+[node name="player" parent="." index="8"]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." index="19"]
+position = Vector2( 512.375, 300.057 )
+[connection signal="game_selesai" from="playermerah" to="." method="_on_playermerah_game_selesai"]

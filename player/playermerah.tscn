@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/karakter/DinoSprites - mort.png" type="Texture" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+
+[node name="playermerah" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+frame = 4
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -7.88333, 2.50896, -3.35849, 9.35056, 4.58648, 8.17706, 5.52625, 3.96168, 6.25305, 1.48723, 6.4099, -7.92712, -0.449558, -8.02726, -6.30762, -7.87706, -8.24479, -4.40399 )
+
+[node name="lompat" parent="." index="3"]
+volume_db = -6.71

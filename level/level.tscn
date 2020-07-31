@@ -1,0 +1,169 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/font/04b_30/04B_30__.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://level/level.gd" type="Script" id=3]
+[ext_resource path="res://assets/ground/tanah.png" type="Texture" id=4]
+[ext_resource path="res://level/floor2.gd" type="Script" id=5]
+[ext_resource path="res://level/floor1.gd" type="Script" id=6]
+[ext_resource path="res://assets/ground/clouds foreground.png" type="Texture" id=7]
+[ext_resource path="res://assets/ground/clouds background.png" type="Texture" id=8]
+[ext_resource path="res://level/Sprite2.gd" type="Script" id=9]
+[ext_resource path="res://level/Sprite.gd" type="Script" id=10]
+[ext_resource path="res://level/awanhitam1.gd" type="Script" id=11]
+[ext_resource path="res://level/awanhitam2.gd" type="Script" id=12]
+[ext_resource path="res://ui/game over scene.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ui/controller.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/music/down-the-river-we-go.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/music/Jingle_Lose_00.wav" type="AudioStream" id=16]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 534.392, 58.6537 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16.3278, 268.275 )
+
+[node name="level" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="awanbelakng" type="Sprite" parent="."]
+position = Vector2( 513.386, 134.923 )
+scale = Vector2( 1.01302, 1.31291 )
+texture = ExtResource( 8 )
+
+[node name="awanhitam1" type="Sprite" parent="."]
+modulate = Color( 0.854902, 0.854902, 0.854902, 0.666667 )
+position = Vector2( 502.071, 324.967 )
+texture = ExtResource( 7 )
+script = ExtResource( 11 )
+
+[node name="awanhitam2" type="Sprite" parent="."]
+modulate = Color( 0.854902, 0.854902, 0.854902, 0.666667 )
+position = Vector2( 1525.98, 305.991 )
+texture = ExtResource( 7 )
+script = ExtResource( 12 )
+
+[node name="awanputih1" type="Sprite" parent="."]
+position = Vector2( 514.047, 498.166 )
+scale = Vector2( 1.98071, 1.56 )
+texture = ExtResource( 7 )
+script = ExtResource( 10 )
+
+[node name="awanputih2" type="Sprite" parent="."]
+position = Vector2( 2523.82, 531.621 )
+scale = Vector2( 2.00548, 1.42822 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2( 363.691, 386.39 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="floor1" type="Sprite" parent="floor"]
+position = Vector2( 266.206, 210.316 )
+scale = Vector2( 1.99563, 1.98573 )
+texture = ExtResource( 4 )
+script = ExtResource( 6 )
+
+[node name="floor2" type="Sprite" parent="floor"]
+position = Vector2( 2309.66, 210.609 )
+scale = Vector2( 1.99555, 2 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2( 171.13, 210.321 )
+shape = SubResource( 1 )
+
+[node name="game over scene" parent="." instance=ExtResource( 13 )]
+visible = false
+margin_left = 510.807
+margin_top = 305.833
+margin_right = 510.807
+margin_bottom = 305.833
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 212.343, 369.161 )
+
+[node name="Timer_kaktus" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Timer_batu" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="score" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 408.0
+margin_top = 44.5
+margin_right = 573.0
+margin_bottom = 75.5
+custom_fonts/font = SubResource( 2 )
+text = "Score: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Update_Score" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="dinding" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dinding"]
+position = Vector2( -16.4192, 261.185 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="dinding"]
+position = Vector2( 1038.43, 264.701 )
+shape = SubResource( 3 )
+
+[node name="rumput" type="Timer" parent="."]
+autostart = true
+
+[node name="burung bawah" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="burung" type="Timer" parent="."]
+wait_time = 11.0
+autostart = true
+
+[node name="controller" parent="." instance=ExtResource( 14 )]
+margin_left = 11.0
+margin_top = -6.0
+margin_right = 11.0
+margin_bottom = -6.0
+
+[node name="audio" type="Node2D" parent="."]
+
+[node name="backsound" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource( 15 )
+volume_db = -10.065
+
+[node name="lose" type="AudioStreamPlayer2D" parent="audio"]
+pause_mode = 2
+stream = ExtResource( 16 )
+volume_db = -6.71
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 513.488, 299.097 )
+[connection signal="game_selesai" from="player" to="." method="_on_player_game_selesai"]
+[connection signal="timeout" from="Timer_kaktus" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer_batu" to="." method="_on_Timer_batu_timeout"]
+[connection signal="timeout" from="Update_Score" to="." method="_on_Update_Score_timeout"]
+[connection signal="timeout" from="rumput" to="." method="_on_rumput_timeout"]
+[connection signal="timeout" from="burung bawah" to="." method="_on_burung_bawah_timeout"]
+[connection signal="timeout" from="burung" to="." method="_on_burung_timeout"]

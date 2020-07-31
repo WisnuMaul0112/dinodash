@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/karakter/DinoSprites - doux.png" type="Texture" id=1]
+[ext_resource path="res://player/player.gd" type="Script" id=2]
+[ext_resource path="res://assets/music/Jump_03.wav" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "berdiri"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "jalan"
+length = 1.1
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -7.88333, 2.50896, -3.35849, 9.35056, 4.58648, 8.17706, 5.52625, 3.96168, 6.25305, 1.48723, 6.4099, -7.92712, -0.449558, -8.02726, -6.30762, -7.87706, -8.24479, -4.40399 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "lompat"
+length = 0.3
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11, 11 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mati"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 16 ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 20, 21, 22 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -7.88333, 2.50896, -3.35849, 9.35056, 4.58648, 8.17706, 5.52625, 3.96168, 6.25305, 1.48723, 8.17673, -5.06973, -0.255947, -4.95877, -5.97019, -4.57043, -8.24479, -4.40399 ) ]
+}
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 212.343, 366.146 )
+scale = Vector2( 5, 5 )
+collision_mask = 6
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 24
+frame = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/berdiri = SubResource( 1 )
+anims/jalan = SubResource( 2 )
+anims/lompat = SubResource( 3 )
+anims/mati = SubResource( 4 )
+anims/nunduk = SubResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -7.88333, 2.50896, -3.35849, 9.35056, 4.58648, 8.17706, 5.52625, 3.96168, 6.25305, 1.48723, 8.17673, -5.06973, -0.255947, -4.95877, -5.97019, -4.57043, -8.24479, -4.40399 )
+
+[node name="lompat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -6.71

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://level/level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/playerhijau.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level/levelhijau.gd" type="Script" id=3]
+
+
+
+[node name="levelhijau" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="playerhijau" parent="." index="7" instance=ExtResource( 2 )]
+
+[node name="player" parent="." index="8"]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." index="19"]
+position = Vector2( 514.85, 299.583 )
+[connection signal="game_selesai" from="playerhijau" to="." method="_on_playerhijau_game_selesai"]

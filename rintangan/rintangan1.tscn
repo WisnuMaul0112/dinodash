@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://rintangan/rintangan.tscn" type="PackedScene" id=1]
+
+[node name="rintangan" instance=ExtResource( 1 )]
+position = Vector2( 1259.31, 516.8 )
+
+[node name="sprite" parent="." index="0"]
+modulate = Color( 0.627451, 0.839216, 0.372549, 1 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -26.9582, -28.4634 )
+
+[node name="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( -27.0908, -25.8239 )
+scale = Vector2( 1.66006, 2.29862 )
+
+[node name="kecepatan" parent="." index="3"]
+wait_time = 10.0
+one_shot = false

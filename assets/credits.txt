@@ -1,0 +1,6 @@
+this is my first game that I published, this game was created using Godot Game Engine, gameplay is to avoid obstacles that come. 
+Assets used
+Dino by Arks @ScissorMarks
+Tileset by Joaobaltieriart @joaobaltieri
+Desert enemy by caftpix
+

@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/karakter/Vulture_attack.png" type="Texture" id=1]
+[ext_resource path="res://rintangan/burung.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "terbang"
+length = 0.65
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -15.7284, 5.65296, 0.104694, -3.39451, 21.2482, 2.40767, 20.1665, 6.53804, 15.6427, 7.22643, 15.6427, 9.38996, 21.1499, 12.0452, 21.2482, 15.0938, 17.0195, 14.7988, 17.1832, 21.8814, 9.71954, 21.4589, -0.701374, 15.1219, -3.79948, 5.54593, -7.46088, 5.40511, -13.7979, 12.0238, -14.6429, 7.93993 ) ]
+}
+
+[node name="burung" type="Area2D" groups=[
+"paused",
+]]
+position = Vector2( 1153.06, 440.152 )
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/terbang = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -15.7284, 5.65296, 0.104694, -3.39451, 21.2482, 2.40767, 20.1665, 6.53804, 15.6427, 7.22643, 15.6427, 9.38996, 21.1499, 12.0452, 21.2482, 15.0938, 17.0195, 14.7988, 17.1832, 21.8814, 9.71954, 21.4589, -0.701374, 15.1219, -3.79948, 5.54593, -7.46088, 5.40511, -13.7979, 12.0238, -14.6429, 7.93993 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 2.97178, 6.15578 )
+scale = Vector2( 1.8703, 0.851412 )
+[connection signal="body_entered" from="." to="." method="_on_burung_body_entered"]
